@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: agent-metier
+  ai:
+    anthropic:
+      api-key: ${ANTHROPIC_API_KEY}
+      chat:
+        options:
+          model: ${ANTHROPIC_MODEL:claude-sonnet-4-5}
+    mcp:
+      client:
+        connections:
+          fournisseurs-server:
+            transport-type: SSE
+            sse:
+              url: http://mcp-fournisseurs:8080
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
